@@ -8,18 +8,26 @@ namespace TDD.HW1
 {
     public class OrderAnalyzer<T>
     {
-        private IEnumerable<T> DataList;
+        private IEnumerable<T> _DataList;
+        public IEnumerable<T> DataList
+        {
+            get { return _DataList; }
+            set { _DataList = value; }
+        }
+        public OrderAnalyzer()
+        {
 
+        }
         public OrderAnalyzer(IEnumerable<T> dataList)
         {
-            this.DataList = dataList;
+            this._DataList = dataList;
         }
 
         public List<int> GetSumByCost(decimal groupSize, string fieldName)
         {
             var result = new List<int>();
 
-            var data = DataList.ToList();
+            var data = _DataList.ToList();
 
             var groupsNum = Math.Ceiling(data.Count / groupSize);
 

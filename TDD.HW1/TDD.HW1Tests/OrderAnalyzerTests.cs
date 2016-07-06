@@ -14,26 +14,27 @@ namespace TDD.HW1.Tests
     {
         private IEnumerable<Order> orders = GetOrderList();
         [TestMethod()]
-        public void GetSumByCostTest()
+        public void Set_3_As_A_Group_Get_Result_By_Cost_Return_6_15_24_21()
         {
             // arrange
-            var anallyzer = new OrderAnalyzer<Order>(orders);
-            //var fieldName = nameof(Order.Cost);
-            var expected = (new[] { 6, 15, 24, 21 }).ToList();
+            var analyzer = new OrderAnalyzer<Order>();
+            analyzer.DataList = orders;
+            var expected = new List<int>() { 6, 15, 24, 21 };
+            
             // act
-            var actual = anallyzer.GetSumByCost(3, "Cost");
+            var actual = analyzer.GetSumByCost(3, "Cost");
 
             // assert
             expected.ToExpectedObject().ShouldEqual(actual);
         }
 
         [TestMethod()]
-        public void GetSumByRevenueTest()
+        public void Set_4_As_A_Group_Get_Result_By_Cost_Return_50_66_60()
         {
             // arrange
             var anallyzer = new OrderAnalyzer<Order>(orders);
-            //var fieldName = nameof(Order.Cost);
-            var expected = (new[] { 50, 66, 60 }).ToList();
+            var expected = new List<int>() { 50, 66, 60 };
+            
             // act
             var actual = anallyzer.GetSumByCost(4, "Revenue");
 
